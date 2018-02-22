@@ -1,0 +1,29 @@
+{
+  "name": "tallinn-transport-api",
+  "version": "1.0.0",
+  "description": "REST API for Tallinn public transport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreasvirkus/tallinn-transport-api.git"
+  },
+  "keywords": [
+    "rest",
+    "tallinn",
+    "transport",
+    "api"
+  ],
+  "author": "antc <write@andreasvirkus.me> (https://andreasvirkus.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreasvirkus/tallinn-transport-api/issues"
+  },
+  "homepage": "https://github.com/andreasvirkus/tallinn-transport-api#readme",
+  "dependencies": {
+    "gtfs": "^1.5.1",
+    "mongoose": "^5.0.6"
+  }
+}

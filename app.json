@@ -1,0 +1,22 @@
+{
+  "name": "Tallinn Transport API",
+  "description": "REST API for Tallinn public transport",
+  "keywords": [
+    "REST",
+    "Node",
+    "MongoDB",
+    "mLab",
+    "GTFS"
+  ],
+  "repository": "https://github.com/andreasvirkus/tallinn-transport-api",
+  "success_url": "/",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    "mongolab"
+  ]
+}
