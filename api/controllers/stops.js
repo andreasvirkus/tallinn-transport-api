@@ -28,7 +28,7 @@ exports.getStop = (req,res) => {
 const stopIds = [
   '70011',
   '70012'
-];
+]
 // gtfs.getStops({
 //   agency_key: 'caltrain',
 //   stop_id: {
@@ -37,7 +37,7 @@ const stopIds = [
 // })
 //   .then(stops => {
 
-//   });
+//   })
 
 // Get all stops for a specific route and direction
 // gtfs.getStops({
@@ -47,7 +47,7 @@ const stopIds = [
 // })
 //   .then(stops => {
 
-//   });
+//   })
 
 // Get all stops within a `radius` of the `lat`, `lon` specified.
 // `radius` is optional and in miles. Default: 1 mile.
@@ -60,4 +60,4 @@ const stopIds = [
 // })
 //   .then(stops => {
 
-//   });
+//   })

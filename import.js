@@ -4,11 +4,11 @@ const mongoose = require('mongoose')
 
 mongoose.connect(config.mongoUrl)
 
-gtfs.import(config)
-  .then(() => {
-    console.log('Import Successful')
+module.importData = () => {
+  gtfs.import(config).then(() => {
+    console.log('GTFS Import Successful')
     return mongoose.connection.close()
-  })
-  .catch(err => {
+  }).catch(err => {
     console.error(err)
   })
+}

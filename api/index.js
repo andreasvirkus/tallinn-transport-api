@@ -20,6 +20,6 @@ router.get('/stop-name/:name?', (req, res) => stops.getStop(req, res))
 // invoke next() and do not respond.
 router.use(function (req, res) {
   res.status(404).json({ error: "Lame, can't find that" })
-});
+})
 
-module.exports = router;
+module.exports = router

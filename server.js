@@ -20,6 +20,10 @@ app.use(cors({
 
 app.use('/api', router)
 
+app.get('/', (req, res) => {
+  res.send('Visit /api for further info')
+})
+
 /* istanbul ignore next */
 if (!module.parent) {
   app.listen(port)
