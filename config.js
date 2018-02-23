@@ -1,7 +1,8 @@
 module.exports = {
   'verbose': true,
   'skipDelete': true,
-  'mongoUrl': process.env.MONGO_URI,
+  'mongoUrl': process.env.MONGODB_URI,
+  'port': process.env.PORT,
   'agencies': [
     {
       'agency_key': 'tallinn',
