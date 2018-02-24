@@ -11,17 +11,18 @@ mongoose.connect(mongoUrl)
 exports.getAll = (req, res) => {
   gtfs.getStops({
     agency_key: agencyKey
+  }, {}, {
+    limit: req.params.amount || 100
   }).then(stops => res.json(stops))
 }
 
-// Get a specific stop by stop_id
+// Get a specific stop by stop_name
 exports.getStop = (req,res) => {
   gtfs.getStops({
     agency_key: agencyKey,
     stop_name: req.params.name
   }).then(stops => res.json(stops))
 }
-
 
 // Get a collection of stops
 // TODO: Get IDs from Firebase top search results for transportation type
