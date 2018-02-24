@@ -11,4 +11,5 @@ Feel free to fork or deploy to Heroku:
 - Create REST API for our GTFS mongo collection
 - Expose handful of GET endpoints (stop, ..?)
 - Configure start script to run index.js (maybe rename to import.js) and then run server.js
+- Generate UI for API docs (/)
 - Have a cup of tea

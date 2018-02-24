@@ -8,7 +8,8 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   res.json({
-    status: 'API is serving!'
+    status: 'API is serving!',
+    endpoints: 'Currently available: /stop and /stop-name/:name'
   })
 })
 

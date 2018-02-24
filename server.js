@@ -4,8 +4,10 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const express = require('express')
 const compression = require('compression')
-const router = require('./api')
+
 const port = require('./config').port
+const router = require('./api')
+const importData = require('./import').importData
 
 const app = express()
 
@@ -24,8 +26,7 @@ app.get('/', (req, res) => {
   res.send('Visit /api for further info')
 })
 
-/* istanbul ignore next */
-if (!module.parent) {
+importData().then(() => {
   app.listen(port)
-  console.log('Express started on port ', port)
-}
+  console.log('Express started on port', port)
+}).catch(err => console.error(err))
