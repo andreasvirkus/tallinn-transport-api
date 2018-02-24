@@ -1,5 +1,7 @@
+const isDev = process.env.NODE_ENV !== 'production'
+
 module.exports = {
-  'verbose': true,
+  'verbose': isDev ? true : false,
   'skipDelete': true,
   'mongoUrl': process.env.MONGODB_URI,
   'port': process.env.PORT,
