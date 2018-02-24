@@ -7,10 +7,15 @@ const router = express.Router()
 
 
 router.get('/', (req, res) => {
-  res.json({
-    status: 'API is serving!',
-    endpoints: 'Currently available: /stop and /stop-name/:name'
-  })
+  const docs = {
+    status: 'Welcome to the (unofficial) Tallinn Transportation API!',
+    endpoints: {
+      '/stops/:amount': 'Get a number of stops',
+      '/stop/:name': 'Get a specific stop'
+    }
+  }
+  res.header('Content-Type','application/json');
+  res.send(JSON.stringify(docs, null, 2));
 })
 
 router.get('/stops/:amount?', (req, res) => stops.getAll(req, res))
