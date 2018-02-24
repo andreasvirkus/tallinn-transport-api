@@ -13,8 +13,9 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/stop/:name?', (req, res) => stops.getAll(req, res))
-router.get('/stop-name/:name?', (req, res) => stops.getStop(req, res))
+router.get('/stops/:amount?', (req, res) => stops.getAll(req, res))
+
+router.get('/stop/:name?', (req, res) => stops.getStop(req, res))
 
 // Our custom JSON 404 middleware. Since it's placed last
 // it will be the last middleware called, if all others

@@ -11,8 +11,6 @@ const importData = require('./import').importData
 
 const app = express()
 
-importData()
-
 app.use(helmet())
 app.use(compression())
 app.use(morgan('common'))
@@ -30,3 +28,5 @@ app.get('/', (req, res) => {
 
 app.listen(port)
 console.log('Express started on port', port)
+console.log('Starting GTFS import...');
+importData()

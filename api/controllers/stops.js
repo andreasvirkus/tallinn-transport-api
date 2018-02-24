@@ -9,19 +9,21 @@ mongoose.connect(mongoUrl)
 
 // Get all stops for an agency
 exports.getAll = (req, res) => {
+  // TODO: Add limit validation to param
+  const limit = req.params.amount || 100
+  console.log('limit:', limit);
   gtfs.getStops({
     agency_key: agencyKey
-  }).then(stops => res.json(stops))
+  }, {}, { limit }).then(stops => res.json(stops))
 }
 
-// Get a specific stop by stop_id
+// Get a specific stop by stop_name
 exports.getStop = (req,res) => {
   gtfs.getStops({
     agency_key: agencyKey,
     stop_name: req.params.name
   }).then(stops => res.json(stops))
 }
-
 
 // Get a collection of stops
 // TODO: Get IDs from Firebase top search results for transportation type
