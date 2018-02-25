@@ -4,12 +4,12 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const express = require('express')
 const compression = require('compression')
-
-const port = require('./config').port
+const conf = require('./config')
 const router = require('./api')
 const importData = require('./import').importData
 
 const app = express()
+const port = conf.port
 
 app.use(helmet())
 app.use(compression())
@@ -28,5 +28,8 @@ app.get('/', (req, res) => {
 
 app.listen(port)
 console.log('Express started on port', port)
-console.log('Starting GTFS import...');
-importData()
+
+if (!conf.isDev) {
+  console.log('Starting GTFS import...');
+  importData()
+}

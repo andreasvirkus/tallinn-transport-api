@@ -1,10 +1,18 @@
-const isDev = process.env.NODE_ENV !== 'production'
+const env = process.env.NODE_ENV
+const isDev = env !== 'production'
+const devOnly = isDev ? true : false
 
 module.exports = {
-  'verbose': isDev ? true : false,
-  'skipDelete': true,
+  env,
+  isDev,
+  'verbose': devOnly,
+  'skipDelete': devOnly,
   'mongoUrl': process.env.MONGODB_URI,
   'port': process.env.PORT,
+  'agencyNames': [
+    'Tallinna Linnatranspordi AS',
+    'ELRON'
+  ],
   'agencies': [
     {
       'agency_key': 'tallinn',
