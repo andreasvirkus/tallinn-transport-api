@@ -26,6 +26,13 @@ app.get('/', (req, res) => {
   res.send('Visit /api for further info')
 })
 
+// Our custom JSON 404 middleware. Since it's placed last
+// it will be the last middleware called, if all others
+// invoke next() and do not respond.
+app.use(function (req, res) {
+  res.status(404).json({ error: `Lame, can't find that` })
+})
+
 app.listen(port)
 console.log('Express started on port', port)
 
