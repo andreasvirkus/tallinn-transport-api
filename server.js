@@ -33,8 +33,7 @@ app.use(function (req, res) {
   res.status(404).json({ error: `Lame, can't find that` })
 })
 
-app.listen(port)
-console.log('Express started on port', port)
+app.listen(port, () => console.log(`Server listening on port ${port}`))
 
 if (!conf.isDev) {
   console.log('Starting GTFS import...');

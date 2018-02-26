@@ -10,6 +10,11 @@ Feel free to fork or deploy to Heroku:
 ## TODO:
 - Create REST API for our GTFS mongo collection
 - Expose handful of GET endpoints (stop, ..?)
-- Configure start script to run index.js (maybe rename to import.js) and then run server.js
+- Design query flow for FE
+  - Get vehicle type (to filter out agency names like Elron maybe)
+  - Get user's position and query stops by geo + radius
+  - Get stop times by stop_id
+  - Get route times by route_id (?)
+- ~Configure start script to run index.js (maybe rename to import.js) and then run server.js~
 - Generate UI for API docs (/)
 - Have a cup of tea
