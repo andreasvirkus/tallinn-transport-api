@@ -24,7 +24,10 @@ router.get('/', (req, res) => {
     status: 'Welcome to the (unofficial) Tallinn Transportation API!',
     endpoints: {
       '/stops/:amount': 'Get data about a certain number of stops',
-      '/stop/:name': 'Get data about a specific stop'
+      '/stop/:name': 'Get data about a specific stop',
+      '/area/:lat/:lon': 'Get stops in a small radius for the provided latitude and longitude',
+      '/center': 'Get stops in the city center',
+      '/agencies': 'Get agencies'
     }
   }
   res.header('Content-Type','application/json');
@@ -33,7 +36,8 @@ router.get('/', (req, res) => {
 
 router.get('/stops/:amount?', (req, res) => stops.getAll(req, res))
 router.get('/stop/:name?', (req, res) => stops.getStop(req, res))
-router.get('/area/:radius?', (req, res) => stops.getStopsInArea(req, res))
+router.get('/area/:lat/:lon', (req, res) => stops.getStopsInArea(req, res))
+router.get('/center', (req, res) => stops.getStopsInCenter(req, res))
 router.get('/agencies', (req, res) => agencies.getAgencies(req, res))
 
 module.exports = router

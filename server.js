@@ -35,7 +35,4 @@ app.use(function (req, res) {
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
 
-if (!conf.isDev) {
-  console.log('Starting GTFS import...');
-  importData()
-}
+!conf.isDev && importData()
