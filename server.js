@@ -15,9 +15,8 @@ app.use(helmet())
 app.use(compression())
 app.use(morgan('common'))
 app.use(cors({
-  origin: ['http://localhost:3001', 'viimane.info'],
-  methods: ['GET'],
-  allowedHeaders: ['Content-Type']
+  origin: conf.isDev ? 'http://localhost:8080' : 'https://viimane.info',
+  methods: ['GET']
 }))
 
 app.use('/api', router)
