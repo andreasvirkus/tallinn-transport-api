@@ -32,6 +32,6 @@ app.use(function (req, res) {
   res.status(404).json({ error: `Lame, can't find that` })
 })
 
-app.listen(port, () => console.log(`Server listening on port ${port}`))
+if (!conf.isDev) importData()
 
-!conf.isDev && importData()
+app.listen(port, () => console.log(`Server listening on port ${port}`))

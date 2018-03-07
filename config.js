@@ -6,7 +6,6 @@ module.exports = {
   env,
   isDev,
   'verbose': devOnly,
-  'skipDelete': devOnly,
   'mongoUrl': process.env.MONGODB_URI,
   'port': process.env.PORT,
   'agencyNames': [

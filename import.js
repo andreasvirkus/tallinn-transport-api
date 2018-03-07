@@ -11,11 +11,9 @@ function importData() {
       console.log('GTFS Import Successful')
       mongoose.connection.close()
     })
-    .catch(err => {
-      console.error('Unable to import GTFS:', err)
-    })
+    .catch(err => console.error('Unable to import GTFS:', err))
 }
 
-exports.importData = () => importData
+exports.importData = importData
 
 !module.parent && importData()
