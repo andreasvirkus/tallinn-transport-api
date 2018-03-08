@@ -5,7 +5,7 @@ const devOnly = isDev ? true : false
 module.exports = {
   env,
   isDev,
-  'verbose': devOnly,
+  'verbose': true, // devOnly,
   'mongoUrl': process.env.MONGODB_URI,
   'port': process.env.PORT,
   'agencyNames': [

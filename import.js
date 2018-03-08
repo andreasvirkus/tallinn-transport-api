@@ -5,7 +5,8 @@ const mongoose = require('mongoose')
 mongoose.connect(config.mongoUrl)
 
 function importData() {
-  console.log('Starting GTFS import...', config)
+  console.log('Config before import:', config)
+  console.log('Starting GTFS import...')
   gtfs.import(config)
     .then(() => {
       console.log('GTFS Import Successful')
