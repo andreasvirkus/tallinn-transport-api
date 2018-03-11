@@ -2,8 +2,9 @@ const gtfs = require('gtfs')
 const mongoose = require('mongoose')
 
 const config = require('../../config')
-const mongoUrl = config.mongoUrl
-const agencyKey = config.agencies[0].agency_key
+const gtfsConfig = config.gtfs
+const mongoUrl = gtfsConfig.mongoUrl
+const agencyKey = gtfsConfig.agencies[0].agency_key
 const agencyNames = config.agencyNames
 
 mongoose.connect(mongoUrl)
