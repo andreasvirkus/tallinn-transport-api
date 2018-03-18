@@ -1,18 +1,17 @@
 const env = process.env.NODE_ENV
 const isDev = env !== 'production'
-const devOnly = isDev ? true : false
 
 module.exports = {
   env,
   isDev,
+  'port': process.env.PORT,
   'agencyNames': [
     'Tallinna Linnatranspordi AS',
     'ELRON'
   ],
   gtfs: {
-    'verbose': true, // devOnly,
+    'verbose': true, // isDev,
     'mongoUrl': process.env.MONGODB_URI,
-    'port': process.env.PORT,
     'agencies': [
       {
         'agency_key': 'tallinn',
