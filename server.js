@@ -22,7 +22,22 @@ app.use(cors({
 app.use('/api', router)
 
 app.get('/', (req, res) => {
-  res.send('Visit /api for further info')
+  res.redirect(304, '/docs')
+})
+
+app.get('/docs', (req, res) => {
+  const docs = {
+    status: 'Welcome to the (unofficial) Tallinn Transportation API! This is a temporary plain-text documentation to list the available endpoints:',
+    endpoints: {
+      '/stops/:amount': 'Get data about a certain number of stops',
+      '/stop/:name': 'Get data about a specific stop',
+      '/area/:lat/:lon': 'Get stops in a small radius for the provided latitude and longitude',
+      '/center': 'Get stops in the city center',
+      '/agencies': 'Get agencies'
+    }
+  }
+  res.header('Content-Type', 'application/json');
+  res.send(JSON.stringify(docs, null, 2));
 })
 
 // Our custom JSON 404 middleware. Since it's placed last
