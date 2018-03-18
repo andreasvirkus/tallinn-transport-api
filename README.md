@@ -3,6 +3,9 @@
 The API that powers https://viimane.info to help people quickly
 view their last available transit times in Tallinn.
 
+Imports GTFS only in production environment. If `NODE_ENV` equals other
+than production, call the import script manually.
+
 Feel free to fork or deploy to Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/andreasvirkus/tallinn-transport-api)
