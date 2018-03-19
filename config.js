@@ -22,7 +22,7 @@ module.exports = {
           'fare_attributes',
           'feed_info',
           'frequencies',
-          'transfers.txt',
+          'transfers',
           'trips'
         ]
       }
