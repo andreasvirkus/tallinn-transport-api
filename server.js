@@ -19,11 +19,8 @@ app.use(cors({
   methods: ['GET']
 }))
 
+app.get('/', (req, res) => res.redirect('/docs'))
 app.use('/api', router)
-
-app.get('/', (req, res) => {
-  res.redirect(304, '/docs')
-})
 
 app.get('/docs', (req, res) => {
   const docs = {
