@@ -11,13 +11,16 @@ Feel free to fork or deploy to Heroku:
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/andreasvirkus/tallinn-transport-api)
 
 ## TODO:
-- Create REST API for our GTFS mongo collection
-- Expose handful of GET endpoints (stop, ..?)
+- ~Create REST API for our GTFS mongo collection~
+- ~Expose handful of GET endpoints (stop, stops, route, routes)~
+- Filter/parse GTFS data better (zone_name should contain `Harju*`, etc.)
 - Design query flow for FE
   - Get vehicle type (to filter out agency names like Elron maybe)
   - Get user's position and query stops by geo + radius
   - Get stop times by stop_id
   - Get route times by route_id (?)
 - ~Configure start script to run index.js (maybe rename to import.js) and then run server.js~
-- Generate UI for API docs (/)
+- Generate UI for API docs (/ -> /docs)
+  - https://github.com/sourcey/spectacle or http://ashkenas.com/docco/
+  - api/swagger.yaml
 - Have a cup of tea
