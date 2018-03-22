@@ -1,0 +1,121 @@
+swagger: "2.0"
+info:
+  description: "An unofficial Tallinn Transportation API. Fetches data from the GTFS of [peatus.ee](peatus.ee/gtfs)."
+  version: "1.0.0"
+  title: "Tallinn Transport API"
+  contact:
+    email: "write@andreasvirkus.me"
+  license:
+    name: "MIT"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "tallinn-transport-api.herokuapp.com"
+basePath: "/v1"
+paths:
+  /stop/{stopId}:
+    get:
+      tags:
+      - "stop"
+      summary: "Find stop by its ID"
+      description: "Returns a single stop"
+      operationId: "getStop"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "stopId"
+        in: "path"
+        description: "ID of route to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        404:
+          description: "Stop not found"
+        405:
+          description: "Invalid input"
+  /stops/area/{lat}/{lon}:
+    get:
+      tags:
+      - "stops"
+      summary: "Find stops by area"
+      description: "Returns an array of stops for that area"
+      operationId: "getStopsInArea"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "lat"
+        in: "path"
+        description: "Latitude"
+        required: true
+        type: "number"
+        format: "double"
+      - name: "lon"
+        in: "path"
+        description: "Longitude"
+        required: true
+        type: "number"
+        format: "double"
+      responses:
+        404:
+          description: "Stop not found"
+        405:
+          description: "Invalid input"
+  /stops/center:
+    get:
+      tags:
+      - "stops"
+      summary: "Find stops in city centre"
+      description: "Returns an array of stops in a 0.3 mile radius of Tallinn city centre"
+      operationId: "getStopsInCenter"
+      produces:
+      - "application/json"
+      responses:
+        404:
+          description: "Stop not found"
+        405:
+          description: "Invalid input"
+  /route/{routeId}:
+    get:
+      tags:
+      - "route"
+      summary: "Find route by ID"
+      description: "Returns a single route"
+      operationId: "getRoute"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "routeId"
+        in: "path"
+        description: "ID of route to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Route not found"
+  /routes/{stopId}:
+    get:
+      tags:
+      - "routes"
+      summary: "Find all routes for a specific stop"
+      description: "Returns an array of routes for given stop"
+      operationId: "getRoutesForStop"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "stopId"
+        in: "path"
+        description: "ID of stop to find routes for"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Routes not found"

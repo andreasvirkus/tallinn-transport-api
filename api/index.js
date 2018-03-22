@@ -1,12 +1,15 @@
 const express = require('express')
+const mongoose = require('mongoose')
 
-const stops = require('./controllers/stops')
 const config = require('../config')
-const agencies = require('./controllers/agencies')
-const stopsTimes = require('./controllers/stopTimes')
+const stops = require('./controllers/stops')
+const times = require('./controllers/stopTimes')
+const routes = require('./controllers/routes')
 
 const app = express()
 const router = express.Router()
+
+mongoose.connect(config.gtfs.mongoUrl)
 
 // router.use((req, res, next) => {
 //   const { secret } = req.headers;
@@ -23,21 +26,23 @@ router.get('/', (req, res) => {
   const docs = {
     status: 'Welcome to the (unofficial) Tallinn Transportation API!',
     endpoints: {
-      '/stops/:amount': 'Get data about a certain number of stops',
-      '/stop/:name': 'Get data about a specific stop',
-      '/area/:lat/:lon': 'Get stops in a small radius for the provided latitude and longitude',
-      '/center': 'Get stops in the city center',
-      '/agencies': 'Get agencies'
+      '/stop/time/:id': 'Get time table for a specific stop',
+      '/stop/:id': 'Get data about a specific stop',
+      '/stops/area/:lat/:lon': 'Get stops in a small radius for the provided coordinates',
+      '/stops/center': 'Get stops in the city center',
+      '/route/:id': 'Get a specific route',
+      '/routes/:id': 'Get the routes for that stop ID'
     }
   }
   res.header('Content-Type','application/json');
   res.send(JSON.stringify(docs, null, 2));
 })
 
-router.get('/stops/:amount?', (req, res) => stops.getAll(req, res))
-router.get('/stop/:name?', (req, res) => stops.getStop(req, res))
-router.get('/area/:lat/:lon', (req, res) => stops.getStopsInArea(req, res))
-router.get('/center', (req, res) => stops.getStopsInCenter(req, res))
-router.get('/agencies', (req, res) => agencies.getAgencies(req, res))
+router.get('/stop/time/:id', (req, res) => times.getStopTimes(req, res))
+router.get('/stop/:id', (req, res) => stops.getStop(req, res))
+router.get('/stops/area/:lat/:lon', (req, res) => stops.getStopsInArea(req, res))
+router.get('/stops/center', (req, res) => stops.getStopsInCenter(req, res))
+router.get('/route/:id', (req, res) => routes.getRoute(req, res))
+router.get('/routes/:id', (req, res) => routes.getRoutesByStopId(req, res))
 
 module.exports = router
