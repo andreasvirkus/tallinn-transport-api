@@ -5,6 +5,7 @@ const config = require('../config')
 const stops = require('./controllers/stops')
 const times = require('./controllers/stopTimes')
 const routes = require('./controllers/routes')
+const data = require('./controllers/data')
 
 const app = express()
 const router = express.Router()
@@ -14,7 +15,7 @@ mongoose.connect(config.gtfs.mongoUrl)
 // router.use((req, res, next) => {
 //   const { secret } = req.headers;
 
-//   if (!config.isDev && secret !== configs.get('API_SECRET')) {
+//   if (!config.isDev && secret !== config.get('API_SECRET')) {
 //     res.statusMessage = 'Invalid secret.'
 //     return res.status(401)
 //   }
@@ -45,5 +46,6 @@ router.get('/route/:id', (req, res) => routes.getRoute(req, res))
 router.get('/routes/:id', (req, res) => routes.getRoutesByStopId(req, res))
 router.get('/times/detail/:stop/:route/:direction', (req, res) => times.getStopTimesForDirection(req, res))
 router.get('/times/:stop', (req, res) => times.getStopTimes(req, res))
+router.post('/data/update', (req, res) => data.importData())
 
 module.exports = router

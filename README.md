@@ -20,6 +20,7 @@ Feel free to fork or deploy to Heroku:
   - Get stop times by stop_id
   - Get route times by route_id (?)
 - ~Configure start script to run index.js (maybe rename to import.js) and then run server.js~
+- Check mongoose collections and if empty, call /api/data/update
 - Generate UI for API docs (/ -> /docs)
   - https://github.com/sourcey/spectacle or http://ashkenas.com/docco/
   - api/swagger.yaml
