@@ -46,6 +46,6 @@ router.get('/route/:id', (req, res) => routes.getRoute(req, res))
 router.get('/routes/:id', (req, res) => routes.getRoutesByStopId(req, res))
 router.get('/times/detail/:stop/:route/:direction', (req, res) => times.getStopTimesForDirection(req, res))
 router.get('/times/:stop', (req, res) => times.getStopTimes(req, res))
-router.post('/data/update', (req, res) => data.importData())
+router.post('/data/update', (req, res) => data.importData(res))
 
 module.exports = router
