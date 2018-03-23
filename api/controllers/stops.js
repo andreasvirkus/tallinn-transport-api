@@ -29,7 +29,9 @@ exports.getStopsInCenter = (req, res) => {
   }, {
     _id: 0,
     stop_name: 1,
-    stop_id: 1
+    stop_id: 1,
+    stop_area: 1,
+    zone_name: 1
   })
   .then(stops => res.json(stops))
   .catch(err => console.error('getStopsInCenter:', err))
@@ -49,7 +51,9 @@ exports.getStopsInArea = (req, res) => {
   }, {
     _id: 0,
     stop_name: 1,
-    stop_id: 1
+    stop_id: 1,
+    stop_area: 1,
+    zone_name: 1
   })
   .then(stops => res.json(stops))
   .catch(err => console.error('getStopsInArea:', err))

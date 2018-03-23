@@ -38,11 +38,12 @@ router.get('/', (req, res) => {
   res.send(JSON.stringify(docs, null, 2));
 })
 
-router.get('/stop/time/:id', (req, res) => times.getStopTimes(req, res))
 router.get('/stop/:id', (req, res) => stops.getStop(req, res))
 router.get('/stops/area/:lat/:lon', (req, res) => stops.getStopsInArea(req, res))
 router.get('/stops/center', (req, res) => stops.getStopsInCenter(req, res))
 router.get('/route/:id', (req, res) => routes.getRoute(req, res))
 router.get('/routes/:id', (req, res) => routes.getRoutesByStopId(req, res))
+router.get('/times/detail/:stop/:route/:direction', (req, res) => times.getStopTimesForDirection(req, res))
+router.get('/times/:stop', (req, res) => times.getStopTimes(req, res))
 
 module.exports = router
