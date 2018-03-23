@@ -2,10 +2,8 @@ const gtfs = require('gtfs')
 const config = require('../../config').gtfs
 
 exports.importData = res => {
+  res.json({ message: 'GTFS parsing and data import started' })
   gtfs.import(config)
-    .then(() => res.json({ status: 200, message: '...GTFS Import Successful!' }))
-    .catch(err => res.status(503).json({
-      err,
-      message: 'Unable to import GTFS:'
-    }))
+    .then(() => console.log('GTFS import successful'))
+    .catch(err => console.error('Unable to import GTFS:', err))
 }

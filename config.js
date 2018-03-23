@@ -17,7 +17,7 @@ module.exports = {
         'agency_key': 'tallinn',
         'url': 'http://www.peatus.ee/gtfs/gtfs.zip',
         'exclude': [
-          // 'shapes',
+          'shapes',
           // 'fare_rules',
           // 'fare_attributes',
           // 'feed_info',
