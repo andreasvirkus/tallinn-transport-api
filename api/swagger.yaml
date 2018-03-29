@@ -9,7 +9,8 @@ info:
     name: "MIT"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "tallinn-transport-api.herokuapp.com"
-basePath: "/v1"
+basePath: "/api/v1"
+x-examples:
 paths:
   /stop/{stopId}:
     get:
@@ -28,6 +29,8 @@ paths:
         type: "integer"
         format: "int64"
       responses:
+        200:
+          description: "Successful operation"
         404:
           description: "Stop not found"
         405:
@@ -55,6 +58,8 @@ paths:
         type: "number"
         format: "double"
       responses:
+        200:
+          description: "Successful operation"
         404:
           description: "Stop not found"
         405:
@@ -69,6 +74,8 @@ paths:
       produces:
       - "application/json"
       responses:
+        200:
+          description: "Successful operation"
         404:
           description: "Stop not found"
         405:
@@ -109,6 +116,64 @@ paths:
       - name: "stopId"
         in: "path"
         description: "ID of stop to find routes for"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Routes not found"
+  /times/stop/{stopId}:
+    get:
+      tags:
+      - "Times"
+      summary: "Get stop times for a specific stop"
+      description: "Returns an array of times for given stop"
+      operationId: "getStopTimes"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "stopId"
+        in: "path"
+        description: "ID of stop to get times for"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Routes not found"
+  /times/detail/{stopId}/{route}/{direction}:
+    get:
+      tags:
+      - "Times"
+      summary: "Get stop times for a specific stop"
+      description: "Returns an array of times for given stop"
+      operationId: "getStopTimesForDirection"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "stopId"
+        in: "path"
+        description: "ID of stop to get times for"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "direction"
+        in: "path"
+        description: "Numerical value of direction (0 | 1)"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "route"
+        in: "path"
+        description: "ID of route to filter times by"
         required: true
         type: "integer"
         format: "int64"
