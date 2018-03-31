@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const config = require('../config')
 const stops = require('./controllers/stops')
-const times = require('./controllers/stopTimes')
+const times = require('./controllers/times')
 const routes = require('./controllers/routes')
 const data = require('./controllers/data')
 
@@ -26,9 +26,11 @@ router.get('/stop/:id', (req, res) => stops.getStop(req, res))
 router.get('/stops/area/:lat/:lon', (req, res) => stops.getStopsInArea(req, res))
 router.get('/stops/center', (req, res) => stops.getStopsInCenter(req, res))
 router.get('/route/:id', (req, res) => routes.getRoute(req, res))
+router.get('/routes/direction/:route', (req, res) => routes.getDirectionsByRoute(req, res))
 router.get('/routes/:id', (req, res) => routes.getRoutesByStopId(req, res))
-router.get('/times/detail/:stop/:route/:direction', (req, res) => times.getStopTimesForDirection(req, res))
 router.get('/times/stop/:stop', (req, res) => times.getStopTimes(req, res))
+router.get('/times/detail/:stop/:route/:direction', (req, res) => times.getStopTimesForDirection(req, res))
+router.get('/times/route/:route', (req, res) => times.getStopTimesForRoute(req, res))
 router.post('/data/update', (req, res) => data.importData(res))
 
 module.exports = router

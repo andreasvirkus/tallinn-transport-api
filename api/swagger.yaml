@@ -103,6 +103,29 @@ paths:
           description: "Invalid ID supplied"
         404:
           description: "Route not found"
+  /routes/direction/{route}:
+    get:
+      tags:
+      - "routes"
+      summary: "Find all routes for a specific stop"
+      description: "Returns an array of routes for given stop"
+      operationId: "getRoutesForStop"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "route"
+        in: "path"
+        description: "ID of route to find directions for"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Routes not found"
   /routes/{stopId}:
     get:
       tags:
@@ -171,6 +194,29 @@ paths:
         required: true
         type: "integer"
         format: "int64"
+      - name: "route"
+        in: "path"
+        description: "ID of route to filter times by"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Routes not found"
+  /times/route/{route}:
+    get:
+      tags:
+      - "Times"
+      summary: "Get stop times for a route"
+      description: "Returns an array of times for given route"
+      operationId: "getStopTimesForRoute"
+      produces:
+      - "application/json"
+      parameters:
       - name: "route"
         in: "path"
         description: "ID of route to filter times by"

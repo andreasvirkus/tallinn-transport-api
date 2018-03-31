@@ -1,29 +1,29 @@
 const env = process.env.NODE_ENV
 const isDev = env !== 'production'
+const mongoUrl = process.env.MONGODB_URI
 
 module.exports = {
   env,
   isDev,
-  'port': process.env.PORT,
-  'agencyNames': [
+  port: process.env.PORT,
+  agencyNames: [
     'Tallinna Linnatranspordi AS',
     'ELRON'
   ],
   gtfs: {
-    'verbose': true, // isDev,
-    'mongoUrl': process.env.MONGODB_URI,
-    'agencies': [
+    verbose: true,
+    mongoUrl,
+    agencies: [
       {
-        'agency_key': 'tallinn',
-        'url': 'http://www.peatus.ee/gtfs/gtfs.zip',
-        'exclude': [
+        agency_key: 'tallinn',
+        url: 'http://www.peatus.ee/gtfs/gtfs.zip',
+        exclude: [
           'shapes',
-          // 'fare_rules',
-          // 'fare_attributes',
-          // 'feed_info',
+          'transfers',
           'frequencies',
-          // 'transfers',
-          // 'trips'
+          // 'feed_info',
+          'fare_rules',
+          // 'fare_attributes',
         ]
       }
     ]

@@ -28,3 +28,15 @@ exports.getRoutesByStopId = (req, res) => {
   .then(routes => res.json(routes))
   .catch(err => console.log('getRoutesByStopId:', err))
 }
+
+exports.getDirectionsByRoute = (req, res) => {
+  const { route } = req.params
+
+  gtfs.getDirectionsByRoute({
+    agency_key: agencyKey,
+    route_id: { route }
+  })
+  .then(directions => res.json(directions))
+  .catch(err => console.error('getDirectionsByRoute:', err))
+
+}
